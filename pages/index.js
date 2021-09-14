@@ -56,13 +56,14 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <div className="w-full bg-blue-500 p-4">
+      <div className="w-full bg-blue-500 h-56 p-4 mb-96">
+        <div className=""></div>
         <div className="max-w-screen-lg mx-auto pt-12">
           <h2 className="text-4xl text-white font-semibold mb-6">Skills</h2>
-          <div className="grid grid-cols-3 gap-5 text-center ">
+          <div className="grid lg:grid-cols-3 gap-5 text-center sm:grid-cols-2 grid-cols-1">
             {/* Front-End */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-full">
                 <CodeIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Front-End</h3>
                 <p className="">
@@ -96,7 +97,7 @@ export default function Home() {
             </div>
             {/* Back-End */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-full">
                 <ServerIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Back-end</h3>
                 <p className="">
@@ -118,7 +119,7 @@ export default function Home() {
             </div>
             {/* // Design */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-full">
                 <PencilIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Design</h3>
                 <p className="">
@@ -138,7 +139,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="max-w-screen-lg mx-auto my-20 p-4">
+      <div className="max-w-screen-lg mx-auto my-20 p-4 mt-24">
         <div className="flex relative items-center justify-end mb-6">
           <div className="w-48 bg-blue-300 h-0.5 "></div>
 
