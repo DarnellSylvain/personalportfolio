@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+
 import { Header } from "../components/Header";
 import styles from "../styles/Home.module.css";
 
@@ -12,12 +13,22 @@ import {
   AdobeXdIcon,
   MongoIcon,
   NodeIcon,
+  EnvelopeIcon,
+  MapMarkerIcon,
+  TwitterIcon,
+  LinkedInIcon,
+  YoutubeIcon,
+  InstagramIcon,
+  GithubIcon,
 } from "../components/Icons";
 
 import { PencilIcon, CodeIcon, ServerIcon } from "@heroicons/react/solid";
 import { Footer } from "../components/Footer";
+import { ProjectCard } from "../components/ProjectCard";
+import { useState } from "react";
 
 export default function Home() {
+  const [designSkill, setDesignSkill] = useState(false);
   return (
     <div>
       <Head>
@@ -26,40 +37,69 @@ export default function Home() {
       </Head>
       <Header />
 
-      <main>
-        <section className="max-w-screen-lg mx-auto flex items-center justify-center my-52 p-4">
-          <div>
-            <h1 className="font-bold text-5xl mb-6 text-center">
-              Hey, I'm Darnell Sylvain
-            </h1>
-            <p className="max-w-2xl">
-              I'm web developer based in London, UK. I enjoy bringing ideas to
-              life on the internet through creation of websites and
-              applications. After obtaining a bachelors degree in Mechanical
-              Engineering, I turned my attention to trying to learn a new skill
-              which led me to coding. I soon fell in love with coding,
-              recognising it's ability to allow people to innovate, share, solve
-              problems and communicate. Other than programming, I love gaming,
-              watching football and reading books.
-            </p>
+      <section className="max-w-screen-lg mx-auto flex flex-wrap items-center justify-center p-4 h-screen">
+        <div className="text-primary">
+          <p className="text-center text-white bg-blue-500 w-max mx-auto px-8 py-px rounded-md text-lg mb-4">
+            Web Developer
+          </p>
+          <h1 className="font-bold text-7xl mb-6 text-center mx-auto text-header">
+            Darnell Sylvain
+          </h1>
+          <div className="flex mb-2 justify-center">
+            <EnvelopeIcon className="w-4 mr-4" />
+            <p>Darnellsylvain@gmail.com</p>
           </div>
-          <div>
-            <div className="shadow-lg rounded-full overflow-hidden h-64 w-64 flex flex-wrap justify-center content-center ml-4 relative">
-              <Image
-                src="/darnellpicture.jpg"
-                alt="Picture of the author"
-                className="absolute top-0"
-                width={400}
-                height={600}
-              />
-            </div>
+          <div className="flex mb-2 text-center justify-center">
+            <MapMarkerIcon className="w-4 mr-4" />
+            <p className="">London</p>
           </div>
-        </section>
-      </main>
-      <div className="w-full bg-blue-500 h-56 p-4 mb-96">
-        <div className=""></div>
+          <div className="flex justify-center items-center mt-6">
+            <TwitterIcon className="w-5 group-hover:text-blue-500 transition duration-200 mr-4" />
+            <InstagramIcon className="w-5 group-hover:text-blue-500 transition duration-200 mr-4" />
+            <LinkedInIcon className="w-5 group-hover:text-blue-500 transition duration-200 mr-4" />
+            <GithubIcon className="w-5 group-hover:text-blue-500 transition duration-200 mr-4" />
+          </div>
+        </div>
+      </section>
+
+      <section className="p-4 mb-8 flex justify-center flex-wrap max-w-screen-lg mx-auto">
+        <div className="flex items-center justify-end mb-6 w-full">
+          <div className="w-48 bg-blue-300 h-0.5 "></div>
+          <h2 className="text-4xl font-semibold text-right ml-6">About</h2>
+        </div>
+
+        <div className="">
+          <div className="shadow-lg rounded-full overflow-hidden h-64 w-64 flex flex-wrap content-center mt-8 mx-auto">
+            <Image
+              src="/darnellpicture.jpg"
+              alt="Picture of the author"
+              className=""
+              width={400}
+              height={600}
+            />
+          </div>
+        </div>
+        <p className="max-w-2xl mt-8 text-center">
+          Hey, I'm Darnell, a web developer based in London, UK. <br />
+          <br /> I enjoy bringing ideas to life on the internet through creation
+          of websites and applications.
+          <br />
+          <br /> After obtaining a bachelors degree in Mechanical Engineering, I
+          turned my attention to trying to learn a new skill which led me to
+          coding. I soon fell in love with coding, recognising it's ability to
+          allow people to innovate, share, solve problems and communicate.
+          <br />
+          <br /> Other than programming, I love gaming, watching football and
+          reading books.
+        </p>
+      </section>
+
+      <div className="w-full p-4 ">
         <div className="max-w-screen-lg mx-auto pt-12">
-          <h2 className="text-4xl text-white font-semibold mb-6">Skills</h2>
+          <div className="flex items-center  mb-6">
+            <h2 className="text-4xl font-semibold mr-6">Skills</h2>
+            <div className="w-48 bg-blue-300 h-0.5 "></div>
+          </div>
           <div className="grid lg:grid-cols-3 gap-5 text-center sm:grid-cols-2 grid-cols-1">
             {/* Front-End */}
             <div>
@@ -71,6 +111,7 @@ export default function Home() {
                   user experiences and great performance. Preference using the
                   React framework.
                 </p>
+
                 <div className="grid grid-cols-2">
                   <div className="flex items-center mt-5">
                     <NextIcon className="h-8 w-8 min-w-lg mx-4" />
@@ -139,14 +180,13 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="max-w-screen-lg mx-auto my-20 p-4 mt-24">
-        <div className="flex relative items-center justify-end mb-6">
+      <div className="max-w-screen-lg mx-auto my-20 p-4">
+        <div className="flex items-center justify-end mb-6">
           <div className="w-48 bg-blue-300 h-0.5 "></div>
-
-          <h2 className="text-4xl font-semibold text-right ml-6">Skills</h2>
+          <h2 className="text-4xl font-semibold text-right ml-6">Projects</h2>
         </div>
 
-        <ul className="mx-auto w-full flex justify-center mb-6">
+        <ul className="mx-auto flex flex-wrap justify-center mb-6">
           <li className="m-4 border-b-2 border-blue-300 pb-3">
             All Categories
           </li>
@@ -156,61 +196,13 @@ export default function Home() {
           <li className="m-4 pb-3">Next.js</li>
         </ul>
 
-        <div className="grid grid-cols-3 gap-5 text-center ">
-          <div className="">
-            <div className="group bg-supercamp bg-center bg-cover bg-no-repeat rounded-lg relative hover:bg-gray-900">
-              <div className="mix-blend-hard-light bg-gradient-to-r from-red-400 to-red-500 p-4 rounded-lg shadow-lg h-48 group-hover:bg-gray-900 "></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white opacity-0 group-hover:opacity-100">
-                <h1 className="">Hello</h1>
-                <p>Super Camp</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="bg-maynooth bg-center bg-cover bg-no-repeat rounded-lg relative">
-              <div className="mix-blend-hard-light bg-gradient-to-r from-blue-400 to-blue-500 p-4 rounded-lg shadow-lg h-48"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white">
-                <h1 className="">Hello</h1>
-                <p>Super Camp</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mix-blend-hard-light bg-center bg-cover bg-no-repeat rounded-lg relative">
-              <div className="bg-gradient-to-r from-green-400 to-green-500 p-4 rounded-lg shadow-lg h-48"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white">
-                <h1 className="">Hello</h1>
-                <p>Super Camp</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mix-blend-hard-light bg-center bg-cover bg-no-repeat rounded-lg relative">
-              <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-white p-4 rounded-lg shadow-lg h-48"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white">
-                <h1 className="">Hello</h1>
-                <p>Super Camp</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mix-blend-hard-light bg-center bg-cover bg-no-repeat rounded-lg relative">
-              <div className="bg-gradient-to-r from-indigo-400 to-indigo-500 bg-white p-4 rounded-lg shadow-lg h-48"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white">
-                <h1 className="">Hello</h1>
-                <p>Super Camp</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mix-blend-hard-light bg-center bg-cover bg-no-repeat rounded-lg relative">
-              <div className="bg-gradient-to-r from-purple-400 to-purple-500 bg-white p-4 rounded-lg shadow-lg h-48"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white">
-                <h1 className="">Hello</h1>
-                <p>Super Camp</p>
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 text-center ">
+          <ProjectCard bgImage="supercamp" color="red" />
+          <ProjectCard bgImage="maynooth" color="blue" />
+          <ProjectCard color="green" />
+          <ProjectCard color="yellow" />
+          <ProjectCard color="indigo" />
+          <ProjectCard color="purple" />
         </div>
       </div>
 

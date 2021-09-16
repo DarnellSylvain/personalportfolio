@@ -3,6 +3,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      textColor: {
+        primary: "#36373b",
+        header: "#2d2e32",
+      },
+      backgroundColor: {
+        primary: "#36373b",
+        header: "#2d2e32",
+      },
       backgroundImage: {
         supercamp: "url('/supercamp.jpg')",
         maynooth: "url('/maynoothproject.png')",

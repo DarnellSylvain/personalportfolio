@@ -4,13 +4,14 @@ import styles from "../styles/Home.module.css";
 
 export const Header = () => {
   const [theme, setTheme] = useState("light");
+  const [menuSelected, setMenuSelected] = useState(false);
 
   const toggleTheme = () => {
     setTheme((prevState) => (prevState === "light" ? "dark" : "light"));
   };
 
   return (
-    <div className="md:container mx-auto flex justify-between p-10 mb-12">
+    <div className="container mx-auto flex justify-between items-center pt-6 px-4 pb-6 mb-4 shadow-md sticky top-0 z-10 bg-white">
       <div
         className={styles.outer}
         onClick={() => {
@@ -47,12 +48,25 @@ export const Header = () => {
         ></div>
         {/* <div className={`${styles.ball} ${styles.move}`}></div> */}
       </div>
-      <ul className="flex">
+
+      {/* <h1>Toggle</h1> */}
+
+      <ul className="flex hidden">
         <li className="ml-10">Dashboard</li>
         <li className="ml-10">Skills</li>
         <li className="ml-10">Projects</li>
         <li className="ml-10">About</li>
       </ul>
+      <div
+        className={
+          menuSelected
+            ? `${styles.navbarBtn} ${styles.open}`
+            : `${styles.navbarBtn}`
+        }
+        onClick={() => setMenuSelected((prevState) => !prevState)}
+      >
+        <div className={`${styles.navbarBtnBurger} bg-primary`}></div>
+      </div>
     </div>
   );
 };
