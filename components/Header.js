@@ -12,7 +12,7 @@ export const Header = () => {
 
   return (
     <div className="shadow-md sticky top-0 z-10 bg-white">
-      <div className="container mx-auto flex justify-between items-center pt-6 px-4 pb-6 mb-4">
+      <div className="container mx-auto flex justify-between items-center pt-6 px-4 pb-6">
         <div
           className={styles.outer}
           onClick={() => {
@@ -52,21 +52,23 @@ export const Header = () => {
 
         {/* <h1>Toggle</h1> */}
 
-        <ul className="flex hidden">
+        <ul className="hidden md:flex">
           <li className="ml-10">Dashboard</li>
           <li className="ml-10">Skills</li>
           <li className="ml-10">Projects</li>
           <li className="ml-10">About</li>
         </ul>
-        <div
-          className={
-            menuSelected
-              ? `${styles.navbarBtn} ${styles.open}`
-              : `${styles.navbarBtn}`
-          }
-          onClick={() => setMenuSelected((prevState) => !prevState)}
-        >
-          <div className={`${styles.navbarBtnBurger} bg-primary`}></div>
+        <div className="md:hidden">
+          <div
+            className={`${
+              menuSelected
+                ? `${styles.navbarBtn} ${styles.open}`
+                : `${styles.navbarBtn}`
+            }`}
+            onClick={() => setMenuSelected((prevState) => !prevState)}
+          >
+            <div className={`${styles.navbarBtnBurger} bg-primary`}></div>
+          </div>
         </div>
       </div>
     </div>

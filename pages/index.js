@@ -37,8 +37,8 @@ export default function Home() {
       </Head>
       <Header />
 
-      <section className="max-w-screen-lg mx-auto flex flex-wrap items-center justify-center p-4 h-screen">
-        <div className="text-primary">
+      <section className="mx-auto flex flex-wrap items-center justify-center p-4 h-screen">
+        <div className="max-w-screen-lg text-primary">
           <p className="text-center text-white bg-blue-500 w-max mx-auto px-8 py-px rounded-md text-lg mb-4">
             Web Developer
           </p>
@@ -67,31 +67,33 @@ export default function Home() {
           <div className="w-48 bg-blue-300 h-0.5 "></div>
           <h2 className="text-4xl font-semibold text-right ml-6">About</h2>
         </div>
-
-        <div className="">
-          <div className="bg-darnellphoto bg-cover bg-center bg-no-repeat shadow-lg rounded-full h-64 w-64 flex flex-wrap content-center mt-8 mx-auto">
-            {/* <Image
-              src="/darnellpicture.jpg"
-              alt="Picture of the author"
-              className=""
-              width={400}
-              height={600}
-            /> */}
+        <div className="flex flex-wrap justify-center items-center lg:flex-nowrap">
+          <div className="">
+            <div className="shadow-lg rounded-full h-64 w-64 lg:h-80 lg:w-80 flex flex-wrap  content-center mt-8 mx-auto overflow-hidden">
+              <Image
+                src="/darnellpicture.jpg"
+                alt="Picture of the author"
+                className=""
+                width={400}
+                height={600}
+              />
+            </div>
           </div>
+
+          <p className="max-w-2xl mt-8 text-center md:ml-6">
+            Hey, I'm Darnell, a web developer based in London, UK. I enjoy
+            bringing ideas to life on the internet through creation of websites
+            and applications.
+            <br />
+            <br /> After obtaining a bachelors degree in Mechanical Engineering,
+            I turned my attention to trying to learn a new skill which led me to
+            coding. I soon fell in love with coding, recognising it's ability to
+            allow people to innovate, share, solve problems and communicate.
+            <br />
+            <br /> Other than programming, I love gaming, watching football and
+            reading books.
+          </p>
         </div>
-        <p className="max-w-2xl mt-8 text-center md:ml-6">
-          Hey, I'm Darnell, a web developer based in London, UK. I enjoy
-          bringing ideas to life on the internet through creation of websites
-          and applications.
-          <br />
-          <br /> After obtaining a bachelors degree in Mechanical Engineering, I
-          turned my attention to trying to learn a new skill which led me to
-          coding. I soon fell in love with coding, recognising it's ability to
-          allow people to innovate, share, solve problems and communicate.
-          <br />
-          <br /> Other than programming, I love gaming, watching football and
-          reading books.
-        </p>
       </section>
 
       <div className="w-full p-4 ">
@@ -197,8 +199,12 @@ export default function Home() {
         </ul>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-max mx-auto">
-          <ProjectCard bgImage="supercamp" color="red" />
-          <ProjectCard bgImage="maynooth" color="blue" />
+          <ProjectCard bgImage="supercamp" color="red" image="supercamp.jpg" />
+          <ProjectCard
+            bgImage="maynooth"
+            color="blue"
+            image="maynoothproject.png"
+          />
           <ProjectCard color="green" />
           <ProjectCard color="yellow" />
           <ProjectCard color="indigo" />
