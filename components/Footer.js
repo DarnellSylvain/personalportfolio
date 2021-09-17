@@ -25,19 +25,19 @@ export const Footer = () => {
         </div>
       </div>
       <div className="mx-auto flex justify-center items-center mt-72">
-        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-gray-200 transition duration-200">
+        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-white hover:border-white transition duration-200">
           <TwitterIcon className="w-5 group-hover:text-blue-500 transition duration-200" />
         </div>
-        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-gray-200 transition duration-200">
+        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-white hover:border-white transition duration-200">
           <InstagramIcon className="w-5 group-hover:text-blue-500 transition duration-200" />
         </div>
-        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-gray-200 transition duration-200">
+        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-white hover:border-white transition duration-200">
           <LinkedInIcon className="w-5 group-hover:text-blue-500 transition duration-200" />
         </div>
-        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-gray-200 transition duration-200">
+        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-white hover:border-white transition duration-200">
           <YoutubeIcon className="w-6 group-hover:text-blue-500 transition duration-200" />
         </div>
-        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-gray-200 transition duration-200">
+        <div className="group rounded-full overflow-hidden border-2 border-gray-200 w-12 h-12 flex justify-center text-white mr-3 hover:bg-white hover:border-white transition duration-200">
           <EnvelopeIcon className="w-5 group-hover:text-blue-500 transition duration-200" />
         </div>
       </div>

@@ -69,20 +69,20 @@ export default function Home() {
         </div>
 
         <div className="">
-          <div className="shadow-lg rounded-full overflow-hidden h-64 w-64 flex flex-wrap content-center mt-8 mx-auto">
-            <Image
+          <div className="bg-darnellphoto bg-cover bg-center bg-no-repeat shadow-lg rounded-full h-64 w-64 flex flex-wrap content-center mt-8 mx-auto">
+            {/* <Image
               src="/darnellpicture.jpg"
               alt="Picture of the author"
               className=""
               width={400}
               height={600}
-            />
+            /> */}
           </div>
         </div>
-        <p className="max-w-2xl mt-8 text-center">
-          Hey, I'm Darnell, a web developer based in London, UK. <br />
-          <br /> I enjoy bringing ideas to life on the internet through creation
-          of websites and applications.
+        <p className="max-w-2xl mt-8 text-center md:ml-6">
+          Hey, I'm Darnell, a web developer based in London, UK. I enjoy
+          bringing ideas to life on the internet through creation of websites
+          and applications.
           <br />
           <br /> After obtaining a bachelors degree in Mechanical Engineering, I
           turned my attention to trying to learn a new skill which led me to
@@ -100,10 +100,10 @@ export default function Home() {
             <h2 className="text-4xl font-semibold mr-6">Skills</h2>
             <div className="w-48 bg-blue-300 h-0.5 "></div>
           </div>
-          <div className="grid lg:grid-cols-3 gap-5 text-center sm:grid-cols-2 grid-cols-1">
+          <div className="grid lg:grid-cols-3 gap-2 md:gap-5 text-center md:grid-cols-2 grid-cols-1 mx-auto">
             {/* Front-End */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg w-full">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-96 md:w-full mx-auto">
                 <CodeIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Front-End</h3>
                 <p className="">
@@ -138,7 +138,7 @@ export default function Home() {
             </div>
             {/* Back-End */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg w-full">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-96 md:w-full mx-auto">
                 <ServerIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Back-end</h3>
                 <p className="">
@@ -159,8 +159,8 @@ export default function Home() {
               </div>
             </div>
             {/* // Design */}
-            <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg w-full">
+            <div className="">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-96 md:w-full mx-auto">
                 <PencilIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Design</h3>
                 <p className="">
@@ -180,7 +180,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="max-w-screen-lg mx-auto my-20 p-4">
+      <div className="max-w-screen-lg mx-auto my-20 py-4 px-2">
         <div className="flex items-center justify-end mb-6">
           <div className="w-48 bg-blue-300 h-0.5 "></div>
           <h2 className="text-4xl font-semibold text-right ml-6">Projects</h2>
@@ -196,7 +196,7 @@ export default function Home() {
           <li className="m-4 pb-3">Next.js</li>
         </ul>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 text-center ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-max mx-auto">
           <ProjectCard bgImage="supercamp" color="red" />
           <ProjectCard bgImage="maynooth" color="blue" />
           <ProjectCard color="green" />
