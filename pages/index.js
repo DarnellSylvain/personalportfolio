@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 
-import { Header } from "../components/Header";
 import styles from "../styles/Home.module.css";
 
 import {
@@ -23,11 +22,33 @@ import {
 } from "../components/Icons";
 
 import { PencilIcon, CodeIcon, ServerIcon } from "@heroicons/react/solid";
+import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { Dashboard } from "../components/Dashboard";
 import { ProjectCard } from "../components/ProjectCard";
 import { useState } from "react";
 
-export default function Home() {
+const URL =
+  "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UC_JxE9KiFhLdZa4kIYfqAUg&key=";
+
+export async function getStaticProps() {
+  const res = await fetch(
+    // `${URL}?part=snippet&playlistId=UC_JxE9KiFhLdZa4kIYfqAUg&maxResults=20&rel=0&key=${process.env.YOUTUBE_API_KEY}`
+    `${URL}${process.env.YOUTUBE_API_KEY}`
+  );
+  const data = await res.json();
+  return {
+    props: {
+      data,
+    }, // will be passed to the page component as props
+
+    revalidate: 60,
+  };
+}
+
+export default function Home({ data }) {
+  console.log(data);
+
   const [designSkill, setDesignSkill] = useState(false);
   return (
     <div>
@@ -62,7 +83,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="p-4 mb-8 flex justify-center flex-wrap max-w-screen-lg mx-auto">
+      <section
+        className="p-4 mb-8 flex justify-center flex-wrap max-w-screen-lg mx-auto"
+        id="about"
+      >
         <div className="flex items-center justify-end mb-6 w-full">
           <div className="w-48 bg-blue-300 h-0.5 "></div>
           <h2 className="text-4xl font-semibold text-right ml-6">About</h2>
@@ -80,7 +104,7 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="max-w-2xl mt-8 text-center md:ml-6">
+          <p className="max-w-2xl mt-8 text-center md:ml-6" id="about">
             Hey, I'm Darnell, a web developer based in London, UK. I enjoy
             bringing ideas to life on the internet through creation of websites
             and applications.
@@ -96,7 +120,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="w-full p-4 ">
+      <div className="w-full p-4" id="skills">
         <div className="max-w-screen-lg mx-auto pt-12">
           <div className="flex items-center  mb-6">
             <h2 className="text-4xl font-semibold mr-6">Skills</h2>
@@ -182,7 +206,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="max-w-screen-lg mx-auto my-20 py-4 px-2">
+      <div className="max-w-screen-lg mx-auto my-20 py-4 px-2" id="projects">
         <div className="flex items-center justify-end mb-6">
           <div className="w-48 bg-blue-300 h-0.5 "></div>
           <h2 className="text-4xl font-semibold text-right ml-6">Projects</h2>
@@ -199,7 +223,12 @@ export default function Home() {
         </ul>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-max mx-auto">
-          <ProjectCard bgImage="supercamp" color="red" image="supercamp.jpg" />
+          <ProjectCard
+            bgImage="supercamp"
+            color="red"
+            image="supercamp.jpg"
+            className="absolute top-0"
+          />
           <ProjectCard
             bgImage="maynooth"
             color="blue"
@@ -210,6 +239,9 @@ export default function Home() {
           <ProjectCard color="indigo" />
           <ProjectCard color="purple" />
         </div>
+      </div>
+      <div id="dashboard">
+        <Dashboard data={data} id="dashboard" />
       </div>
 
       <Footer />

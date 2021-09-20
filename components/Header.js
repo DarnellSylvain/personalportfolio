@@ -1,6 +1,8 @@
-import React from "react";
+import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
+
+import { Link as ScrollLink } from "react-scroll";
 
 export const Header = () => {
   const [theme, setTheme] = useState("light");
@@ -53,10 +55,56 @@ export const Header = () => {
         {/* <h1>Toggle</h1> */}
 
         <ul className="hidden md:flex">
-          <li className="ml-10">Dashboard</li>
-          <li className="ml-10">Skills</li>
-          <li className="ml-10">Projects</li>
-          <li className="ml-10">About</li>
+          <li className="ml-10">
+            <ScrollLink
+              to="dashboard"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-52}
+              onClick={() => setMenuSelected(false)}
+            >
+              <a>Dashboard</a>
+            </ScrollLink>
+          </li>
+          <li className="ml-10">
+            <ScrollLink
+              to="skills"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-52}
+              onClick={() => setMenuSelected(false)}
+            >
+              Skills
+            </ScrollLink>
+          </li>
+          <li className="ml-10">
+            <ScrollLink
+              to="projects"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-92}
+              onClick={() => setMenuSelected(false)}
+            >
+              <a>Projects</a>
+            </ScrollLink>
+          </li>
+          <li className="ml-10">
+            <ScrollLink
+              to="about"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-92}
+              onClick={() => setMenuSelected(false)}
+            >
+              <Link href="/">
+                <a>About</a>
+              </Link>
+            </ScrollLink>
+          </li>
         </ul>
         <div className="md:hidden">
           <div
