@@ -73,7 +73,7 @@ export const Header = () => {
               spy={true}
               smooth={true}
               duration={500}
-              offset={-52}
+              offset={-92}
               onClick={() => setMenuSelected(false)}
             >
               Skills
