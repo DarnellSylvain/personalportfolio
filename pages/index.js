@@ -47,8 +47,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  console.log(data);
-
   const [designSkill, setDesignSkill] = useState(false);
   return (
     <div>

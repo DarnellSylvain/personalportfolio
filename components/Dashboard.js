@@ -2,7 +2,6 @@ export const Dashboard = ({ data }) => {
   const { items = {} } = data;
   const { statistics = {} } = items[0];
   const { subscriberCount, videoCount, viewCount } = statistics;
-  console.log(subscriberCount, videoCount, viewCount);
 
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
