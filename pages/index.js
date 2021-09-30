@@ -1,7 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
+import React from "react";
 
-import styles from "../styles/Home.module.css";
+import dbConnect from "../utils/dbConnect";
+import Project from "../models/Project";
+
+import fetch from "isomorphic-unfetch";
 
 import {
   NextIcon,
@@ -26,28 +30,57 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Dashboard } from "../components/Dashboard";
 import { ProjectCard } from "../components/ProjectCard";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Modal } from "../components/Modal";
+import { PopupContext } from "../context/ModalContext";
 
 const URL =
   "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UC_JxE9KiFhLdZa4kIYfqAUg&key=";
 
 export async function getStaticProps() {
-  const res = await fetch(
-    // `${URL}?part=snippet&playlistId=UC_JxE9KiFhLdZa4kIYfqAUg&maxResults=20&rel=0&key=${process.env.YOUTUBE_API_KEY}`
-    `${URL}${process.env.YOUTUBE_API_KEY}`
-  );
-  const data = await res.json();
+  const res = await fetch(`${URL}${process.env.YOUTUBE_API_KEY}`);
+  const youtubeData = await res.json();
+
+  await dbConnect();
+
+  const result = await Project.find({});
+  const projects = result.map((doc) => {
+    const project = doc.toObject();
+    project._id = project._id.toString();
+    return project;
+  });
+
+  // const response = await fetch("http://localhost:3000/api/test", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+
+  // const data = await response.json();
   return {
     props: {
-      data,
-    }, // will be passed to the page component as props
+      youtubeData,
+      projects,
+    },
 
-    revalidate: 60,
+    revalidate: 60 * 60 * 24,
   };
 }
-
-export default function Home({ data }) {
+export default function Home({ youtubeData, data, projects }) {
   const [designSkill, setDesignSkill] = useState(false);
+  const [modalView, setModalView] = useState(false);
+  const { popup, togglePopup } = useContext(PopupContext);
+
+  const [projectId, setProjectId] = useState("");
+
+  console.log(projects);
+
+  const handleModal = (e) => {
+    console.log(e.currentTarget.id);
+    setProjectId(e.currentTarget.id);
+  };
+
   return (
     <div>
       <Head>
@@ -127,7 +160,7 @@ export default function Home({ data }) {
           <div className="grid lg:grid-cols-3 gap-2 md:gap-5 text-center md:grid-cols-2 grid-cols-1 mx-auto">
             {/* Front-End */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg w-96 md:w-full mx-auto">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-80 md:w-full mx-auto">
                 <CodeIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Front-End</h3>
                 <p className="">
@@ -162,7 +195,7 @@ export default function Home({ data }) {
             </div>
             {/* Back-End */}
             <div>
-              <div className="bg-white p-4 rounded-lg shadow-lg w-96 md:w-full mx-auto">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-80 md:w-full mx-auto">
                 <ServerIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Back-end</h3>
                 <p className="">
@@ -184,7 +217,7 @@ export default function Home({ data }) {
             </div>
             {/* // Design */}
             <div className="">
-              <div className="bg-white p-4 rounded-lg shadow-lg w-96 md:w-full mx-auto">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-80 md:w-full mx-auto">
                 <PencilIcon className="h-9 w-9 text-blue-500 mx-auto" />
                 <h3 className="text-xl font-semibold my-6">Design</h3>
                 <p className="">
@@ -221,26 +254,48 @@ export default function Home({ data }) {
         </ul>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-max mx-auto">
-          <ProjectCard
-            bgImage="supercamp"
-            color="red"
-            image="supercamp.jpg"
-            className="absolute top-0"
-          />
-          <ProjectCard
-            bgImage="maynooth"
-            color="blue"
-            image="maynoothproject.png"
-          />
-          <ProjectCard color="green" />
-          <ProjectCard color="yellow" />
-          <ProjectCard color="indigo" />
-          <ProjectCard color="purple" />
+          {projects.map((project) => (
+            <div
+              id={project._id}
+              key={project.id}
+              onClick={(e) => {
+                handleModal(e);
+                togglePopup();
+                document.body.classList.add("stopScroll");
+              }}
+            >
+              <ProjectCard
+                name={project.name}
+                type={project.type}
+                image={project.projectImg}
+                className="absolute top-0"
+              />
+            </div>
+          ))}
         </div>
       </div>
       <div id="dashboard">
-        <Dashboard data={data} id="dashboard" />
+        <Dashboard data={youtubeData} id="dashboard" />
       </div>
+
+      {console.log(
+        projects
+          .filter((project) => project._id === projectId)
+          .map((project) => console.log(project))
+      )}
+
+      {popup
+        ? projects
+            .filter((project) => project._id === projectId)
+            .map((project) => (
+              <div key={project._id}>
+                <Modal name={project.name} />
+                {console.log(project.name)}
+              </div>
+            ))
+        : null}
+
+      {popup ? <Modal /> : null}
 
       <Footer />
     </div>

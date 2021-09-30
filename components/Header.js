@@ -54,8 +54,8 @@ export const Header = () => {
 
         {/* <h1>Toggle</h1> */}
 
-        <ul className="hidden md:flex">
-          <li className="ml-10">
+        <ul className="hidden md:flex cursor-pointer">
+          <li className="ml-10 ">
             <ScrollLink
               to="dashboard"
               spy={true}
@@ -64,7 +64,7 @@ export const Header = () => {
               offset={-52}
               onClick={() => setMenuSelected(false)}
             >
-              <a>Dashboard</a>
+              Dashboard
             </ScrollLink>
           </li>
           <li className="ml-10">
@@ -88,7 +88,7 @@ export const Header = () => {
               offset={-92}
               onClick={() => setMenuSelected(false)}
             >
-              <a>Projects</a>
+              Projects
             </ScrollLink>
           </li>
           <li className="ml-10">
@@ -100,9 +100,7 @@ export const Header = () => {
               offset={-92}
               onClick={() => setMenuSelected(false)}
             >
-              <Link href="/">
-                <a>About</a>
-              </Link>
+              About
             </ScrollLink>
           </li>
         </ul>

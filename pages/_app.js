@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import { PopupContextProvider } from "../context/ModalContext";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <PopupContextProvider>
+      <Component {...pageProps} />
+    </PopupContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
