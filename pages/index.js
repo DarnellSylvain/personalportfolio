@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 
+import profilePicture from "../public/darnellpicture.jpg";
+
 import dbConnect from "../utils/dbConnect";
 import Project from "../models/Project";
 
@@ -74,10 +76,7 @@ export default function Home({ youtubeData, data, projects }) {
 
   const [projectId, setProjectId] = useState("");
 
-  console.log(projects);
-
   const handleModal = (e) => {
-    console.log(e.currentTarget.id);
     setProjectId(e.currentTarget.id);
   };
 
@@ -126,7 +125,7 @@ export default function Home({ youtubeData, data, projects }) {
           <div className="">
             <div className="shadow-lg rounded-full h-64 w-64 lg:h-80 lg:w-80 flex flex-wrap  content-center mt-8 mx-auto overflow-hidden">
               <Image
-                src="/darnellpicture.jpg"
+                src={profilePicture}
                 alt="Picture of the author"
                 className=""
                 width={400}
@@ -136,14 +135,15 @@ export default function Home({ youtubeData, data, projects }) {
           </div>
 
           <p className="max-w-2xl mt-8 text-center md:ml-6" id="about">
-            Hey, I'm Darnell, a web developer based in London, UK. I enjoy
+            Hey, I&apos;m Darnell, a web developer based in London, UK. I enjoy
             bringing ideas to life on the internet through creation of websites
             and applications.
             <br />
             <br /> After obtaining a bachelors degree in Mechanical Engineering,
             I turned my attention to trying to learn a new skill which led me to
-            coding. I soon fell in love with coding, recognising it's ability to
-            allow people to innovate, share, solve problems and communicate.
+            coding. I soon fell in love with coding, recognising it&apos;s
+            ability to allow people to innovate, share, solve problems and
+            communicate.
             <br />
             <br /> Other than programming, I love gaming, watching football and
             reading books.
@@ -200,7 +200,7 @@ export default function Home({ youtubeData, data, projects }) {
                 <h3 className="text-xl font-semibold my-6">Back-end</h3>
                 <p className="">
                   Building back-end servers to be paired with front-end
-                  applications, creating powerful API's, handling data,
+                  applications, creating powerful API&apos;s, handling data,
                   connecting to databases, and other back-end processes.
                 </p>
                 <div className="grid grid-cols-2">
@@ -267,7 +267,7 @@ export default function Home({ youtubeData, data, projects }) {
               <ProjectCard
                 name={project.name}
                 type={project.type}
-                image={project.projectImg}
+                image={project.projectImg[0]}
                 className="absolute top-0"
               />
             </div>
@@ -278,24 +278,23 @@ export default function Home({ youtubeData, data, projects }) {
         <Dashboard data={youtubeData} id="dashboard" />
       </div>
 
-      {console.log(
-        projects
-          .filter((project) => project._id === projectId)
-          .map((project) => console.log(project))
-      )}
-
       {popup
         ? projects
             .filter((project) => project._id === projectId)
             .map((project) => (
               <div key={project._id}>
-                <Modal name={project.name} />
-                {console.log(project.name)}
+                <Modal
+                  // name={project.name}
+                  // description={project.description}
+                  // liveUrl={project.liveUrl}
+                  // projectImg={project.projectImg}
+                  project={project}
+                />
               </div>
             ))
         : null}
 
-      {popup ? <Modal /> : null}
+      {/* {popup ? <Modal /> : null} */}
 
       <Footer />
     </div>

@@ -7,7 +7,7 @@ const ProjectSchema = new mongoose.Schema({
     required: true,
   },
   projectImg: {
-    type: String,
+    type: Array,
     required: true,
   },
   technologies: Array,

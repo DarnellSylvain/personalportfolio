@@ -20,7 +20,7 @@ export const Footer = () => {
         </p>
         <div className="w-full mt-6">
           <button className="rounded-full border-2 border-blue-500 px-9 py-4 hover:bg-blue-500 transition duration-200">
-            Let's do this
+            Let&apos;s do this
           </button>
         </div>
       </div>

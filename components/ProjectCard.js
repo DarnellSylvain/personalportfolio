@@ -9,7 +9,7 @@ export const ProjectCard = ({ image, className, name, type }) => {
       {/* <div
         className={`mix-blend-hard-light bg-gradient-to-r from-${color}-400 to-${color}-500 p-4 rounded-lg h-full group-hover:bg-gray-900`}
       ></div> */}
-      <div className="group-hover:opacity-0 group-hover:bg-gray-900 transition duration-200 ">
+      <div className="relative h-full w-full group-hover:opacity-0 group-hover:bg-gray-900 transition duration-200 ">
         <Image
           src={`/${image}`}
           alt="Picture of the author"

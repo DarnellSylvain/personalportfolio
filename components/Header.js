@@ -55,18 +55,19 @@ export const Header = () => {
         {/* <h1>Toggle</h1> */}
 
         <ul className="hidden md:flex cursor-pointer">
-          <li className="ml-10 ">
+          <li className="ml-10">
             <ScrollLink
-              to="dashboard"
+              to="about"
               spy={true}
               smooth={true}
               duration={500}
-              offset={-52}
+              offset={-92}
               onClick={() => setMenuSelected(false)}
             >
-              Dashboard
+              About
             </ScrollLink>
           </li>
+
           <li className="ml-10">
             <ScrollLink
               to="skills"
@@ -91,16 +92,16 @@ export const Header = () => {
               Projects
             </ScrollLink>
           </li>
-          <li className="ml-10">
+          <li className="ml-10 ">
             <ScrollLink
-              to="about"
+              to="dashboard"
               spy={true}
               smooth={true}
               duration={500}
-              offset={-92}
+              offset={-52}
               onClick={() => setMenuSelected(false)}
             >
-              About
+              Dashboard
             </ScrollLink>
           </li>
         </ul>
