@@ -1,5 +1,4 @@
 .outer {
-  background-color: #d4d4d4;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -97,5 +96,12 @@
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #3b82f6;
+  margin: 10px;
+}
+
+.scrollbardark::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #10b981;
   margin: 10px;
 }
