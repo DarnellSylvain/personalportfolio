@@ -4,7 +4,7 @@ import dbConnect from "../../utils/dbConnect";
 import Project from "../../models/Project";
 
 const handler = async (req, res) => {
-  const { method } = req;
+  // const { method } = req;
 
   await dbConnect();
 

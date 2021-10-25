@@ -4,7 +4,7 @@ import { useContext } from "react";
 import styles from "../styles/Home.module.css";
 
 import { PopupContext } from "../context/ModalContext";
-import { ThemeContext } from "/context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 import { TwitterIcon, ExitIcon, GithubIcon, LinkIcon } from "./Icons";
 
@@ -17,12 +17,12 @@ export const Modal = ({ project }) => {
         <div
           className={`bg-white w-full h-full overflow-y-scroll justify-between relative rounded-lg md:flex dark:bg-gray-900 ${styles.scrollbar} dark:${scroll.scrollbardark}`}
         >
-          <div className="w-2/4 py-6 w-full">
+          <div className="py-6 w-full">
             <h2 className="text-3xl text-center md:text-left dark:text-white">
               {project.name}
             </h2>
-            <p className="my-4  dark:text-gray-200">{project.description}</p>
-            <ul className="flex justify-center md:justify-start">
+            <p className="my-4  dark:text-gray-200 pr-3">{project.description}</p>
+            <ul className="flex flex-wrap justify-center md:justify-start">
               {project.technologies.map((tech) => {
                 return (
                   <li

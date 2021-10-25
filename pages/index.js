@@ -47,6 +47,7 @@ export async function getStaticProps() {
   await dbConnect();
 
   const result = await Project.find({});
+
   const projects = result.map((doc) => {
     const project = doc.toObject();
     project._id = project._id.toString();
@@ -87,8 +88,8 @@ export default function Home({ youtubeData, data, projects }) {
     <div className={theme}>
       <div className="dark:bg-gray-900">
         <Head>
-          <title>Create Next App</title>
-          <link rel="icon" href="/favicon.ico" />
+          <title>Darnell Sylvain</title>
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <Header />
 
